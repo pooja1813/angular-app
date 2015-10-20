@@ -1,0 +1,26 @@
+<h1>Awesome Movies List</h1>
+
+<div class="row" ng-controller="MoviesListController as moviesListCtrl">
+
+  <button class="btn btn-default" ng-click="moviesListCtrl.showForm = !readingListCtrl.showForm">{{moviesListCtrl.showForm ? "Cancel" : "Create a Review"}}</button>
+  <hr />
+  <review-form change-review-form="moviesListCtrl.changeReviewForm" movies="moviesListCtrl.movies" genres="moviesListCtrl.genres" ng-show="moviesListCtrl.showForm"></review-form>
+  <hr />
+
+  <ul class="list-unstyled col-sm-8">
+    <li class="movie row" ng-repeat="movies in moviesListCtrl.movies">
+      <movie-poster></movie-poster>
+      <div class="col-sm-9">
+        <h3><a href="http://www.amazon.com/gp/product/{{book.isbn}}"
+            >{{movie.title}}</a></h3>
+
+        <cite class="text-muted">Written by {{movie.author}}</cite>
+
+        <p>{{movie.review}}</p>
+
+        <movie-genres genres="movie.genres"></movie-genres>
+
+      </div>
+    </li>
+  </ul>
+</div>
